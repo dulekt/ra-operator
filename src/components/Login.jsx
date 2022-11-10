@@ -17,7 +17,7 @@ export default function Login(props) {
                 onChange={props.assignOrder} />
 
             <Button
-                onClick={props.handleLoginl}
+                onClick={props.handleLogin}
                 colorScheme='blue' 
                 >Log in</Button>
              
