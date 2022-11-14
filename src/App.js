@@ -1,70 +1,73 @@
 import { useState } from 'react';
 import './App.css';
-import { ChakraProvider } from '@chakra-ui/react'
-import Login from './components/Login';
-import PickLabel from './components/PickLabel';
+import LogInView from './views/LogInView';
+import LoginButton from './components/LoginButton';
+import SetLabel from './components/setLabelButton';
+import { ChakraProvider, Stack } from '@chakra-ui/react';
 
-function App() {
-  const [isLoggedin, setIsLoggedin] = useState(true);
-  const [user, setUser] = useState("")
-  const [orderNumber, setOrderNumber] = useState()
-  const [label, setLabel] = useState()
-  const [printLabel, setPrintLabel] = useState(false)
-  const [content, setContent] = useState({ "": 0 })
+export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [order, setOrder] = useState({
+    user: "",
+    orderNumber: "",
+    printLabel: "ddd",
+    content: ""
+  })
+  function handleLogin() {
+    setIsLoggedIn(!isLoggedIn)
 
+  }
+  function changeOrderNumber(e) {
+    setOrder({
+      ...order,
+      orderNumber: e.target.value
+    })
+  }
+  function changePrintLabel(label) {
+    setOrder({
+      ...order,
+      printLabel: { label }
+    })
+  }
 
-  const handleLogin = () => {
-    setIsLoggedin(true);
+  function changeUser(e) {
+    setOrder({
+      ...order,
+      user: e.target.value
+    })
   }
-  const handleLogout = () => {
-    setIsLoggedin(false);
-  }
-  const handleUser = (user) => {
-    setUser(user);
-  }
-  const assignOrder = (value) => {
-    setOrderNumber(value);
-  }
-  const assignLabel = (value) => {
-    setLabel(value);
-  }
-  if (!isLoggedin) {
+
+  if (!isLoggedIn) {
     return (
-      <div className='container'>
-        <ChakraProvider >
-          <div className="App"  >
-            <h1 className='Header'>System zamawiania oznaczen <br /></h1>
-            <Login
-              isLoggedin={isLoggedin}
-              handleLogin={handleLogin}
-              user={user}
-              handleUser={handleUser}
-              orderNumber = {orderNumber}
-              assignOrder={assignOrder}
-
-
+      <ChakraProvider>
+        <Stack>
+          <div className='container'>
+            <LogInView
+              order={order}
+              changeOrderNumber={changeOrderNumber}
+              changeUser={changeUser}
             />
           </div>
-        </ChakraProvider>
+          <LoginButton
+            isLoggedIn={isLoggedIn}
+            handleLogin={handleLogin} />
+        </Stack>
 
-      </div>
+
+      </ChakraProvider>
     );
   }
+
   return (
-    <div className='container'>
-      <ChakraProvider >
+    <ChakraProvider>
+      <Stack>
+        <SetLabel
+          changePrintLabel={changePrintLabel} />
+        <LoginButton
+          isLoggedIn={isLoggedIn}
+          handleLogin={handleLogin} />
+      </Stack>
 
-        <div className="App"  >
-          <h1 className='Header'>System zamawiania oznaczen <br /></h1>
-          <PickLabel
-            handleLogout={handleLogout}
-            assignLabel={assignLabel} />
-
-        </div>
-      </ChakraProvider>
-
-    </div>
-  );
+    </ChakraProvider>
+  )
 }
-
-export default App;
