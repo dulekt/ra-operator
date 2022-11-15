@@ -13,7 +13,7 @@ export default function LoginButton(props) {
     }
     return (
         <Button
-            onClick={props.handleLogin}
+            onClick={props.handleLogout}
             colorScheme='red'
         >Log out</Button>
 

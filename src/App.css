@@ -1,17 +1,8 @@
 body {
-  background-image: url(./IMG/RA_Background.png) !important;
+  background-image: url(assets/images/RA_Background.png) !important;
   background-size: 100% !important;
   background-repeat: no-repeat !important;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
 
-}
-.label-type-button{
-  margin: 2%;
-  align-items: center;
-}
-.label-type-button{align-items: center;}
 
