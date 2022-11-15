@@ -7,6 +7,7 @@ export default function LogInView(props) {
     return (<ChakraProvider >
 
         <div className="App"  >
+
             <h1 className='Header'>System zamawiania oznaczen </h1>
             <Stack direction='column'
                 spacing={1}

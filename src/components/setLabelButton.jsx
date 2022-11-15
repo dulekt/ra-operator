@@ -1,4 +1,4 @@
-import { Button, Stack } from '@chakra-ui/react'
+import { Button, SimpleGrid, Box, Container } from '@chakra-ui/react'
 
 const labels = [
     "80006-269-04",
@@ -11,20 +11,30 @@ const labels = [
 ]
 export default function SetLabel(props) {
     return (
-        <div className='print-label'>
 
-            <Stack direction='column' spacing={1} align='center'>
-                <h1>Wybierz naklejkę: </h1>
+
+        <Container>
+
+            <Box><h1>Wybierz naklejkę: </h1></Box>
+            <SimpleGrid columns={3} spacing={1}>
+
                 {labels.map((label) =>
-                    <Button colorScheme='blue'   
-                    onClick={label => props.changePrintLabel(label)}          
-                    >
-                        {label}
-                    </Button>)}
+                    <Box>
+                        <Button
+                            colorScheme='blue'
+                            size='md'
+                            width='130px'
+                            onClick={label => props.changePrintLabel(label)}>
+                            {label}
+                        </Button>
+                    </Box>
+                )
+                }
 
-            </Stack>
+            </SimpleGrid>
 
-        </div>
+        </Container>
+
 
     );
 }

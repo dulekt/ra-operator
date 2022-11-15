@@ -10,7 +10,7 @@ export default function App() {
   const [order, setOrder] = useState({
     user: "",
     orderNumber: "",
-    printLabel: "ddd",
+    labelType: "",
     content: ""
   })
   function handleLogin() {
@@ -40,6 +40,11 @@ export default function App() {
   if (!isLoggedIn) {
     return (
       <ChakraProvider>
+        <p>Username: {order.user}</p>
+        <p>ON: {order.orderNumber}</p>
+        <p>Label: {order.labelType}</p>
+        <p>{order.content}</p>
+        <></>
         <Stack>
           <div className='container'>
             <LogInView

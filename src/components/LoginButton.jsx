@@ -6,6 +6,8 @@ export default function LoginButton(props) {
             <Button
                 onClick={props.handleLogin}
                 colorScheme='blue'
+                size='md'
+                width='130px'
             >Log in  </Button>
         );
     }
