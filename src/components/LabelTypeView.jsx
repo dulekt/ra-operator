@@ -8,17 +8,18 @@ export default function SetLabelView(props) {
     return (
         <Container>
             <Box><h1>Wybierz naklejkę: </h1></Box>
-            <SimpleGrid columns={3} spacing={1}>
+            <SimpleGrid  columns={3} minChildWidth='120px' spacing={2}>
 
                 {labels.map((label) =>
                     <Button
                         colorScheme='blue'
                         size='sm'
-                        width='120px'
+                        //width='120px'
+                        //fontSize= 'sm'
                         key={label}
                         value={label}
                         onClick={label => props.changePrintLabel(label)}>
-                        {label}
+                        {label.slice(0,20)}
                     </Button>
                 )
                 }

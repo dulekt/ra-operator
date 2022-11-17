@@ -21,7 +21,7 @@ export default function App() {
     orderNumber: "",
     orderType: "",
     labelType: "",
-    content: "",
+    content: [{id:"",text:"",ammount:1}],
     category: "",
     description: ""
   })
@@ -67,10 +67,9 @@ export default function App() {
   return (
     <ChakraProvider>
       <Container
-        centerContent>
-{/*        <p>user: {order.user},  order: {order.orderNumber}, order Type: {order.orderType}
-          , Label Type: {order.labelType}
-  , content: {order.content} </p>*/}
+        centerContent
+
+        maxHeight="100vh">
         <AppHeader />
 
         <AppContent

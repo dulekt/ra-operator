@@ -1,6 +1,7 @@
 import { Button, Stack } from '@chakra-ui/react'
 import { ChakraProvider } from '@chakra-ui/react'
 import labelTypes from 'assets/data/data';
+import 'typeface-roboto'
 
 
 

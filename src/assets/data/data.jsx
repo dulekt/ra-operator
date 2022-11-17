@@ -1,20 +1,5 @@
 const labelTypes = {
-    "Wydruki": [
-        "FA Subs inverter",
-        "FA Subs Rectifier",
-        "inne",
-        "kod kreskowy 80006-269-04",
-        "naklejka na bezpieczniki",
-        "naklejka na switch MCC",
-        "naklejka ID MCC",
-        "PF6000 PW 3PC 3.3kV",
-        "PF6000 PW 4PC 4.16kV",
-        "PF6000 PW 5PC 6,0kV",
-        "PF6000 PW 6PC 6,6kV",
-        "Power brick RU-8557",
-        "Rysunek mechaniczny",
-        "Schemat elektryczny"
-    ],
+
 
     "Naklejki": [
         "80006-269-04",
@@ -34,7 +19,7 @@ const labelTypes = {
         "T9957-033"
     ],
 
-    "Ozaczenia plastikowe": [
+    "Oznaczenia plastikowe": [
         "1 sleeve tag",
         "30 terminal MCC",
         "34 terminale PF6000",
@@ -55,18 +40,35 @@ const labelTypes = {
         "MVD door nameplate",
         "MVD master nameplate",
         "MVD opis urządzenia śruby",
+    ],
+
+    "Wydruki": [
+        "FA Subs inverter",
+        "FA Subs Rectifier",
+        "inne",
+        "kod kreskowy 80006-269-04",
+        "naklejka na bezpieczniki",
+        "naklejka na switch MCC",
+        "naklejka ID MCC",
+        "PF6000 PW 3PC 3.3kV",
+        "PF6000 PW 4PC 4.16kV",
+        "PF6000 PW 5PC 6,0kV",
+        "PF6000 PW 6PC 6,6kV",
+        "Power brick RU-8557",
+        "Rysunek mechaniczny",
+        "Schemat elektryczny"
     ]
 }
 export default labelTypes;
 
 export const names = [
-    "achlech","aduda","adutkie","akrzemi","alubeck","amusial","aolechn",
-    "aornat","aradzie","arogas","asoltys","bdytko","dblaszc","dciach",
-    "dpostoj","dstepan","dtomasi","dwieczo","dwyrzyk","eciazyn","eludzen",
-    "ibara","iradema","jptak","kbasiag","kbednar","kfudale","khibner",
-    "kmajda","kpiastk","krygula","ksewera","kwrobel","kzietar","lgrodzi",
-    "lmirek","mbartko","mbatko","mbugaj","mcieciu","mkurek1","mmrozek",
-    "mpalent","mszyman","mtrzcio","mulikow","mwojdyl","mzakrze","nwawrzy",
-    "ohriuka","pgabrys","pplucin","rbiadac","rfraszk","rjeglor","sadamie",
-    "sdudek","tpardon","trogals","tzalins","uulikow","wpilare"
+    "achlech", "aduda", "adutkie", "akrzemi", "alubeck", "amusial", "aolechn",
+    "aornat", "aradzie", "arogas", "asoltys", "bdytko", "dblaszc", "dciach",
+    "dpostoj", "dstepan", "dtomasi", "dwieczo", "dwyrzyk", "eciazyn", "eludzen",
+    "ibara", "iradema", "jptak", "kbasiag", "kbednar", "kfudale", "khibner",
+    "kmajda", "kpiastk", "krygula", "ksewera", "kwrobel", "kzietar", "lgrodzi",
+    "lmirek", "mbartko", "mbatko", "mbugaj", "mjawors1", "mcieciu", "mkurek1", "mmrozek",
+    "mpalent", "mszyman", "mtrzcio", "mulikow", "mwojdyl", "mzakrze", "nwawrzy",
+    "ohriuka", "pgabrys", "pplucin", "rbiadac", "rfraszk", "rjeglor", "sadamie",
+    "sdudek", "tpardon", "trogals", "tzalins", "uulikow", "wpilare"
 ]

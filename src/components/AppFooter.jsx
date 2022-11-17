@@ -1,18 +1,18 @@
 //
 import React from "react";
 import LoginButton from "./LoginButton";
-import { Stack } from '@chakra-ui/react'
+import { Container, HStack, Box } from '@chakra-ui/react'
 
 export default function AppFooter(props) {
   return (
-    <Stack direction='row'>
+    <Container align={props.isLoggedIn ? "left" : "center"} >
 
       <LoginButton
-      order={props.order}
+        order={props.order}
         isLoggedIn={props.isLoggedIn}
         handleLogin={props.handleLogin}
         handleLogout={props.handleLogout} />
-    </Stack>
+    </Container>
 
 
   );

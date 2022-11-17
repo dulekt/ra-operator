@@ -1,6 +1,6 @@
-import { Select, Input, Stack } from '@chakra-ui/react'
+import { Select, Input, Stack, InputGroup, InputLeftAddon } from '@chakra-ui/react'
 import { ChakraProvider } from '@chakra-ui/react'
-import {names} from 'assets/data/data.jsx'
+import { names } from 'assets/data/data.jsx'
 
 
 export default function LogInView(props) {
@@ -10,7 +10,9 @@ export default function LogInView(props) {
             spacing={1}
             align='center'>
             <Select
+
                 onChange={props.changeUser}
+                variant='flushed'
                 placeholder="Wybierz Login">
                 {names.map((name) =>
                     <option
@@ -19,9 +21,16 @@ export default function LogInView(props) {
                         {name}
                     </option>)}
             </Select>
-            <Input placeholder='Numer zlecenia'
-                value={props.order.orderNumber}
-                onChange={props.changeOrderNumber} />
+            <InputGroup>
+                <InputLeftAddon children='Order:' />
+                <Input
+                    isRequired={true}
+                    variant='flushed'
+                    placeholder='Numer zlecenia'
+                    value={props.order.orderNumber}
+                    onChange={props.changeOrderNumber} />
+            </InputGroup>
+
         </Stack>
     </ChakraProvider>)
 }

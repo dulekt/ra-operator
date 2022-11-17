@@ -1,5 +1,5 @@
 import { Button } from '@chakra-ui/react'
-
+import { MdLogout } from 'react-icons/md';
 export default function LoginButton(props) {
     if (!props.isLoggedIn) {
         return (
@@ -12,6 +12,7 @@ export default function LoginButton(props) {
                         colorScheme='blue'
                         size='sm'
                         width='80px'
+                        m={2}
                     >Log in  </Button>}
             </div>
 
@@ -19,10 +20,12 @@ export default function LoginButton(props) {
     }
     return (
         <Button
+            leftIcon={<MdLogout />}
             onClick={props.handleLogout}
             colorScheme='red'
-            size='sm'
-            width='80px'
+            size='xs'
+            width='70px'
+            m={1}
         >Log out</Button>
 
     );
