@@ -1,6 +1,6 @@
 //App.js
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Container, ChakraProvider } from '@chakra-ui/react';
 import AppHeader from 'components/AppHeader';
 import AppContent from 'components/AppContent';
@@ -21,11 +21,48 @@ export default function App() {
     orderNumber: "",
     orderType: "",
     labelType: "",
-    content: [{id:"",text:"",ammount:1}],
+    content: [
+      { id: "", text: "L1", ammount: 1 }],
     category: "",
     description: ""
   })
+  //TODO
+  function changeContentText(e) {
+    setOrder({
+      ...order.content,
+      content: { ...order.content, text: e.target.value }
+    })
+  }
+  //TODO 
+  function changeContentAmmount(e) {
+    setOrder({
+      ...order.content,
+      ammount: e.target.value
+    })
 
+  }
+  function addEmptyContent() {
+    setOrder({
+      ...order,
+      content: [
+        ...order.content,
+        {
+          id: order.content.at(-1).id + 1,
+          text: "",
+          ammount: 1
+        }]
+    })
+  }
+
+  //useEffect(() => { console.log(order); })
+  function emptyContent(
+
+  ) {
+    setOrder({
+      ...order,
+      content: [{ id: 1, text: "", ammount: 1 }]
+    })
+  }
   function SetOrderToNull() {
     setOrder({
       ...order,
@@ -38,6 +75,8 @@ export default function App() {
       description: ""
     })
   }
+
+
 
   function changeUser(e) {
     setOrder({
@@ -79,6 +118,10 @@ export default function App() {
           changeOrderType={changeOrderType}
           changePrintLabel={changePrintLabel}
           changeUser={changeUser}
+          addEmptyContent={addEmptyContent}
+          emptyContent={emptyContent}
+          changeContentText={changeContentText}
+          changeContentAmmount={changeContentAmmount}
         />
 
         <AppFooter
@@ -88,5 +131,6 @@ export default function App() {
           handleLogout={handleLogout}
         />
       </Container>
+
     </ChakraProvider>)
 }   

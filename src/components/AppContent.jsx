@@ -41,6 +41,8 @@ export default function AppContent(props) {
 
       <OrderContentView
         order={props.order}
+        addEmptyContent={props.addEmptyContent}
+        emptyContent={props.emptyContent}
       />
     </>)
   }

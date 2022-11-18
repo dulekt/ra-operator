@@ -12,6 +12,7 @@ export default function AppFooter(props) {
         isLoggedIn={props.isLoggedIn}
         handleLogin={props.handleLogin}
         handleLogout={props.handleLogout} />
+        
     </Container>
 
 

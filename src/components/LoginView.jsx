@@ -24,7 +24,7 @@ export default function LogInView(props) {
             <InputGroup>
                 <InputLeftAddon children='Order:' />
                 <Input
-                    isRequired={true}
+                    
                     variant='flushed'
                     placeholder='Numer zlecenia'
                     value={props.order.orderNumber}
