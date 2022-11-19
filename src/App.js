@@ -1,18 +1,18 @@
 //App.js
-import './App.css';
-import { useEffect, useState } from 'react';
-import { Container, ChakraProvider } from '@chakra-ui/react';
-import AppHeader from 'components/AppHeader';
-import AppContent from 'components/AppContent';
-import AppFooter from 'components/AppFooter';
+import "./App.css";
+import { useEffect, useState } from "react";
+import { Container, ChakraProvider } from "@chakra-ui/react";
+import AppHeader from "components/AppHeader";
+import AppContent from "components/AppContent";
+import AppFooter from "components/AppFooter";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   function handleLogin() {
-    setIsLoggedIn(true)
+    setIsLoggedIn(true);
   }
   function handleLogout(obj) {
-    setIsLoggedIn(false)
+    setIsLoggedIn(false);
     SetOrderToNull();
   }
 
@@ -21,25 +21,23 @@ export default function App() {
     orderNumber: "",
     orderType: "",
     labelType: "",
-    content: [
-      { id: "", text: "L1", ammount: 1 }],
+    content: [{ id: "", text: "L1", ammount: 1 }],
     category: "",
-    description: ""
-  })
+    description: "",
+  });
   //TODO
   function changeContentText(e) {
     setOrder({
       ...order.content,
-      content: { ...order.content, text: e.target.value }
-    })
+      content: { ...order.content, text: e.target.value },
+    });
   }
-  //TODO 
+  //TODO
   function changeContentAmmount(e) {
     setOrder({
       ...order.content,
-      ammount: e.target.value
-    })
-
+      ammount: e.target.value,
+    });
   }
   function addEmptyContent() {
     setOrder({
@@ -49,19 +47,18 @@ export default function App() {
         {
           id: order.content.at(-1).id + 1,
           text: "",
-          ammount: 1
-        }]
-    })
+          ammount: 1,
+        },
+      ],
+    });
   }
 
   //useEffect(() => { console.log(order); })
-  function emptyContent(
-
-  ) {
+  function emptyContent() {
     setOrder({
       ...order,
-      content: [{ id: 1, text: "", ammount: 1 }]
-    })
+      content: [{ id: 1, text: "", ammount: 1 }],
+    });
   }
   function SetOrderToNull() {
     setOrder({
@@ -72,43 +69,38 @@ export default function App() {
       labelType: "",
       content: "",
       category: "",
-      description: ""
-    })
+      description: "",
+    });
   }
-
-
 
   function changeUser(e) {
     setOrder({
       ...order,
-      user: e.target.value
-    })
+      user: e.target.value,
+    });
   }
   function changeOrderNumber(e) {
     setOrder({
       ...order,
-      orderNumber: e.target.value
-    })
+      orderNumber: e.target.value,
+    });
   }
   function changeOrderType(e) {
     setOrder({
       ...order,
-      orderType: e.target.value
-    })
+      orderType: e.target.value,
+    });
   }
   function changePrintLabel(e) {
     setOrder({
       ...order,
-      labelType: e.target.value
-    })
+      labelType: e.target.value,
+    });
   }
 
   return (
     <ChakraProvider>
-      <Container
-        centerContent
-
-        maxHeight="100vh">
+      <Container centerContent maxHeight="100vh">
         <AppHeader />
 
         <AppContent
@@ -131,6 +123,6 @@ export default function App() {
           handleLogout={handleLogout}
         />
       </Container>
-
-    </ChakraProvider>)
-}   
+    </ChakraProvider>
+  );
+}
