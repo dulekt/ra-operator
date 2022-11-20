@@ -12,27 +12,26 @@ import {
 export default function OrdersList(props) {
   return (
     <>
-      {props.order.content.map((content, index) => (
+      {props.content.map((contentObj, index) => (
         <Card>
-          <HStack>
+          <HStack key={index}>
+            <p>{index + 1}</p>
             <Input
               placeholder="Treść"
               size="sm"
-              key={index}
-              id={index}
-              value={content.text}
-              onChange={props.changeContentText}
+              id={contentObj.id}
+              value={contentObj.text}
+              onChange={(e) => props.changeContentText(index, e)}
             />
-            <p>{index}</p>
+
             <NumberInput
               size="sm"
               defaultValue={1}
-              key={index}
               id={index}
               min={1}
               max={10}
-              value={props.ammount}
-              onChange={props.changeContentAmmount}
+              value={contentObj.ammount}
+              onChange={(e) => props.changeContentAmmount(index, e)}
             >
               <NumberInputField />
               <NumberInputStepper>

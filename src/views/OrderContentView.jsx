@@ -5,20 +5,18 @@ import {
   IconButton,
   ButtonGroup,
   Tooltip,
+  Box,
 } from "@chakra-ui/react";
-import { Box } from "@chakra-ui/react";
-import { HStack } from "@chakra-ui/react";
 import { MdDelete } from "react-icons/md";
 
 export default function OrderContentView(props) {
   return (
     <Container m={1}>
       <OrdersList
-        order={props.order}
+        content={props.content}
         addEmptyContent={props.addEmptyContent}
         emptyContent={props.emptyContent}
       />
-
       <Button
         colorScheme="green"
         m={1}
@@ -27,8 +25,7 @@ export default function OrderContentView(props) {
         onClick={props.addEmptyContent}
       >
         +
-      </Button>
-
+      </Button>{" "}
       <Tooltip label="Usuń Wszystko!">
         <IconButton
           className="deleteAll"
@@ -40,7 +37,6 @@ export default function OrderContentView(props) {
           onClick={props.emptyContent}
         />
       </Tooltip>
-
       <Box display="flex" alignItems="center" justifyContent="center" m={2}>
         <ButtonGroup>
           <Button colorScheme="blue" size="sm">

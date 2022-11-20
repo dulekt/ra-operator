@@ -5,7 +5,6 @@ import "typeface-roboto";
 
 export default function OrderTypeView(props) {
   const orderTypes = Object.keys(labelTypes);
-  console.log(orderTypes);
   const orderTypeButtons = orderTypes.map((type) => (
     <Button
       size="sm"

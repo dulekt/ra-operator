@@ -1,7 +1,7 @@
 //
 import React from "react";
 import LoginButton from "./LoginButton";
-import { Container, HStack, Box } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
 
 export default function AppFooter(props) {
   return (

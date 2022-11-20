@@ -1,6 +1,6 @@
 //App.js
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Container, ChakraProvider } from "@chakra-ui/react";
 import AppHeader from "components/AppHeader";
 import AppContent from "components/AppContent";
@@ -11,7 +11,7 @@ export default function App() {
   function handleLogin() {
     setIsLoggedIn(true);
   }
-  function handleLogout(obj) {
+  function handleLogout() {
     setIsLoggedIn(false);
     SetOrderToNull();
   }
@@ -21,53 +21,73 @@ export default function App() {
     orderNumber: "",
     orderType: "",
     labelType: "",
-    content: [{ id: "", text: "L1", ammount: 1 }],
     category: "",
     description: "",
   });
+
+  const [content, setContent] = useState([
+    {
+      id: 1,
+      text: "Dusko",
+      ammount: 1,
+    },
+    {
+      id: 2,
+      text: "Pawel",
+      ammount: 1,
+    },
+  ]);
+
   //TODO
-  function changeContentText(e) {
-    setOrder({
-      ...order.content,
-      content: { ...order.content, text: e.target.value },
-    });
-  }
-  //TODO
-  function changeContentAmmount(e) {
-    setOrder({
-      ...order.content,
-      ammount: e.target.value,
-    });
-  }
-  function addEmptyContent() {
-    setOrder({
-      ...order,
-      content: [
-        ...order.content,
-        {
-          id: order.content.at(-1).id + 1,
-          text: "",
-          ammount: 1,
-        },
-      ],
-    });
+  function changeContentText(id, e) {
+    console.log(content);
+    setContent(
+      content.map((contentItem) =>
+        contentItem.id === id
+          ? { ...contentItem, text: e.target.value }
+          : contentItem
+      )
+    );
   }
 
-  //useEffect(() => { console.log(order); })
+  //TODO
+  function changeContentAmmount(id, e) {
+    console.log(content);
+    setContent(
+      content.map((contentItem) =>
+        contentItem.id === id
+          ? { ...contentItem, ammount: e.target.value }
+          : contentItem
+      )
+    );
+  }
+
+  function addEmptyContent() {
+    setContent([
+      ...content,
+      {
+        id: content.at(-1).id + 1,
+        text: "",
+        ammount: 1,
+      },
+    ]);
+  }
+
   function emptyContent() {
-    setOrder({
-      ...order,
-      content: [{ id: 1, text: "", ammount: 1 }],
-    });
+    setContent([
+      {
+        id: 1,
+        text: "",
+        ammount: 1,
+      },
+    ]);
   }
   function SetOrderToNull() {
     setOrder({
-      ...order,
       user: "",
       orderNumber: "",
       orderType: "",
       labelType: "",
-      content: "",
       category: "",
       description: "",
     });
@@ -105,6 +125,7 @@ export default function App() {
 
         <AppContent
           order={order}
+          content={content}
           isLoggedIn={isLoggedIn}
           changeOrderNumber={changeOrderNumber}
           changeOrderType={changeOrderType}
