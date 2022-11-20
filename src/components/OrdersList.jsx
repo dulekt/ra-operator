@@ -21,17 +21,17 @@ export default function OrdersList(props) {
               size="sm"
               id={contentObj.id}
               value={contentObj.text}
-              onChange={(e) => props.changeContentText(index, e)}
+              onChange={(e) => props.changeContentText(contentObj.id, e)}
             />
 
             <NumberInput
               size="sm"
               defaultValue={1}
-              id={index}
+              id={contentObj.id}
               min={1}
               max={10}
               value={contentObj.ammount}
-              onChange={(e) => props.changeContentAmmount(index, e)}
+              onChange={(e) => props.changeContentAmmount(contentObj.id, e)}
             >
               <NumberInputField />
               <NumberInputStepper>

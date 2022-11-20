@@ -35,13 +35,28 @@ export default function AppContent(props) {
       </>
     );
   }
-  if (props.order.orderType === ("Naklejki" || "Ozaczenia plastikowe")) {
+
+  if (props.order.orderType === "Naklejki") {
     return (
       <>
         <OrderContentView
           content={props.content}
           addEmptyContent={props.addEmptyContent}
           emptyContent={props.emptyContent}
+          changeContentText={props.changeContentText}
+          changeContentAmmount={props.changeContentAmmount}
+        />
+      </>
+    );
+  } else if (props.order.orderType === "Oznaczenia plastikowe") {
+    return (
+      <>
+        <OrderContentView
+          content={props.content}
+          addEmptyContent={props.addEmptyContent}
+          emptyContent={props.emptyContent}
+          changeContentText={props.changeContentText}
+          changeContentAmmount={props.changeContentAmmount}
         />
       </>
     );

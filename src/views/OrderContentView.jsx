@@ -14,8 +14,8 @@ export default function OrderContentView(props) {
     <Container m={1}>
       <OrdersList
         content={props.content}
-        addEmptyContent={props.addEmptyContent}
-        emptyContent={props.emptyContent}
+        changeContentText={props.changeContentText}
+        changeContentAmmount={props.changeContentAmmount}
       />
       <Button
         colorScheme="green"
