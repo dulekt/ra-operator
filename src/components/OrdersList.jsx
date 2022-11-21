@@ -3,14 +3,13 @@ import OrderAmmountInput from "components/OrderAmmountInput";
 export default function OrdersList(props) {
   return (
     <>
-      {props.content.map((contentObj, index) => (
-        <Card>
-          <HStack key={index}>
+      {props.content.map((contentObj) => (
+        <Card key={contentObj.id}>
+          <HStack>
             <Input
               placeholder="Treść"
               size="sm"
               id={contentObj.id}
-              key={index}
               value={contentObj.text}
               onChange={(e) => props.changeContentText(contentObj.id, e)}
             />
