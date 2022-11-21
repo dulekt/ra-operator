@@ -3,7 +3,7 @@ import { MdLogout } from "react-icons/md";
 export default function LoginButton(props) {
   if (!props.isLoggedIn) {
     return (
-      <div>
+      <>
         {props.order.user.length > 0 && props.order.orderNumber.length > 0 && (
           <Button
             onClick={props.handleLogin}
@@ -15,7 +15,7 @@ export default function LoginButton(props) {
             Log in{" "}
           </Button>
         )}
-      </div>
+      </>
     );
   }
   return (

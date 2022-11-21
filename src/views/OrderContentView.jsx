@@ -44,7 +44,7 @@ export default function OrderContentView(props) {
           <Button colorScheme="blue" size="sm">
             Zamow
           </Button>
-          <Button colorScheme="blue" size="sm">
+          <Button colorScheme="blue" size="sm" onClick={props.printOverIP}>
             Drukuj
           </Button>
         </ButtonGroup>

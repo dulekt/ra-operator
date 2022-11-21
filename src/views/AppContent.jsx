@@ -44,6 +44,7 @@ export default function AppContent(props) {
           changeContentAmmount={props.changeContentAmmount}
           addEmptyContent={props.addEmptyContent}
           emptyContent={props.emptyContent}
+          printOverIP={props.printOverIP}
         />
       </>
     );

@@ -10,6 +10,7 @@ export default function OrdersList(props) {
               placeholder="Treść"
               size="sm"
               id={contentObj.id}
+              key={index}
               value={contentObj.text}
               onChange={(e) => props.changeContentText(contentObj.id, e)}
             />

@@ -108,6 +108,35 @@ export default function App() {
     });
   }
 
+  function contentToList(cont) {
+    const contentList = [];
+    cont.forEach((c) => {
+      for (let step = 0; step < c.ammount; step++) {
+        contentList.push(c.text);
+      }
+    });
+    console.log(contentList);
+    return contentList.filter((el) => {
+      return el !== "";
+    });
+  }
+
+  function printOverIP() {
+    let commandZPL = "";
+    const listOfLabels = contentToList(content);
+    for (let i = 0; i < Math.floor(listOfLabels.length / 3) + 1; i++) {
+      commandZPL +=
+        "^XA^CF0,17^FO145,20^FD" +
+        listOfLabels[3 * i] +
+        "^FS^FO345,25^FD " +
+        listOfLabels[3 * i + 1] +
+        "^FS^FO545,25^FD" +
+        listOfLabels[i + 2] +
+        "^FS^MMC^XZ";
+    }
+    console.log(commandZPL);
+    return commandZPL;
+  }
   return (
     <ChakraProvider>
       <Container centerContent maxHeight="100vh">
@@ -125,6 +154,7 @@ export default function App() {
           emptyContent={emptyContent}
           changeContentText={changeContentText}
           changeContentAmmount={changeContentAmmount}
+          printOverIP={printOverIP}
         />
 
         <AppFooter
