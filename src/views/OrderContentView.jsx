@@ -16,6 +16,8 @@ export default function OrderContentView(props) {
         content={props.content}
         addEmptyContent={props.addEmptyContent}
         emptyContent={props.emptyContent}
+        changeContentText={props.changeContentText}
+        changeContentAmmount={props.changeContentAmmount}
       />
       <Button
         colorScheme="green"

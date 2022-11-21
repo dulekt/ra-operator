@@ -1,44 +1,23 @@
-import {
-  Card,
-  HStack,
-  Input,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
-} from "@chakra-ui/react";
-
+import { Card, HStack, Input } from "@chakra-ui/react";
+import OrderAmmountInput from "components/OrderAmmountInput";
 export default function OrdersList(props) {
   return (
     <>
       {props.content.map((contentObj, index) => (
         <Card>
           <HStack key={index}>
-            <p>{index + 1}</p>
             <Input
               placeholder="Treść"
               size="sm"
               id={contentObj.id}
               value={contentObj.text}
-              onChange={(e) => props.changeContentText(index, e)}
+              onChange={(e) => props.changeContentText(contentObj.id, e)}
             />
-
-            <NumberInput
-              size="sm"
-              defaultValue={1}
-              id={index}
-              min={1}
-              max={10}
-              value={contentObj.ammount}
-              onChange={(e) => props.changeContentAmmount(index, e)}
-            >
-              <NumberInputField />
-              <NumberInputStepper>
-                <NumberIncrementStepper children="+" />
-                <NumberDecrementStepper children="-" />
-              </NumberInputStepper>
-            </NumberInput>
+            <OrderAmmountInput
+              ammount={contentObj.ammount}
+              changeContentAmmount={props.changeContentAmmount}
+              contentId={contentObj.id}
+            />
           </HStack>
         </Card>
       ))}

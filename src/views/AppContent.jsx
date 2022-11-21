@@ -2,7 +2,7 @@ import LoginView from "views/LoginView";
 import OrderTypeView from "views/OrderTypeView";
 import LabelTypeView from "views/LabelTypeView";
 import OrderContentView from "views/OrderContentView";
-
+import SpecialOrderContentView from "views/SpecialOrderContentView";
 export default function AppContent(props) {
   if (!props.isLoggedIn) {
     return (
@@ -35,11 +35,25 @@ export default function AppContent(props) {
       </>
     );
   }
-  if (props.order.orderType === ("Naklejki" || "Ozaczenia plastikowe")) {
+  if (props.order.orderType === "Naklejki") {
     return (
       <>
         <OrderContentView
           content={props.content}
+          changeContentText={props.changeContentText}
+          changeContentAmmount={props.changeContentAmmount}
+          addEmptyContent={props.addEmptyContent}
+          emptyContent={props.emptyContent}
+        />
+      </>
+    );
+  } else if (props.order.orderType === "Oznaczenia plastikowe") {
+    return (
+      <>
+        <OrderContentView
+          content={props.content}
+          changeContentText={props.changeContentText}
+          changeContentAmmount={props.changeContentAmmount}
           addEmptyContent={props.addEmptyContent}
           emptyContent={props.emptyContent}
         />
@@ -48,7 +62,7 @@ export default function AppContent(props) {
   } else {
     return (
       <>
-        <h1>Zamowienia specjalne</h1>
+        <SpecialOrderContentView order={props.order} content={props.content} />
       </>
     );
   }

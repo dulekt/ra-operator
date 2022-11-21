@@ -1,9 +1,9 @@
 //App.js
-import "./App.css";
-import { useState } from "react";
+import "App.css";
+import { useEffect, useState } from "react";
 import { Container, ChakraProvider } from "@chakra-ui/react";
 import AppHeader from "components/AppHeader";
-import AppContent from "components/AppContent";
+import AppContent from "views/AppContent";
 import AppFooter from "components/AppFooter";
 
 export default function App() {
@@ -28,19 +28,12 @@ export default function App() {
   const [content, setContent] = useState([
     {
       id: 1,
-      text: "Dusko",
-      ammount: 1,
-    },
-    {
-      id: 2,
-      text: "Pawel",
+      text: "",
       ammount: 1,
     },
   ]);
-
-  //TODO
+  useEffect(() => console.log(order, content));
   function changeContentText(id, e) {
-    console.log(content);
     setContent(
       content.map((contentItem) =>
         contentItem.id === id
@@ -50,14 +43,10 @@ export default function App() {
     );
   }
 
-  //TODO
   function changeContentAmmount(id, e) {
-    console.log(content);
     setContent(
       content.map((contentItem) =>
-        contentItem.id === id
-          ? { ...contentItem, ammount: e.target.value }
-          : contentItem
+        contentItem.id === id ? { ...contentItem, ammount: e } : contentItem
       )
     );
   }
