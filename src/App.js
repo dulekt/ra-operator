@@ -6,6 +6,7 @@ import AppHeader from "components/AppHeader";
 import AppContent from "views/AppContent";
 import AppFooter from "components/AppFooter";
 
+
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   function handleLogin() {
@@ -33,7 +34,9 @@ export default function App() {
       ammount: 1,
     },
   ]);
-  useEffect(() => console.log(order, content));
+
+  // useEffect(() => console.log(order, content));
+
   function changeContentText(id, e) {
     setContent(
       content.map((contentItem) =>
@@ -72,6 +75,7 @@ export default function App() {
       },
     ]);
   }
+
   function SetOrderToNull() {
     setOrder({
       user: "",
@@ -89,18 +93,21 @@ export default function App() {
       user: e.target.value,
     });
   }
+
   function changeOrderNumber(e) {
     setOrder({
       ...order,
       orderNumber: e.target.value,
     });
   }
+
   function changeOrderType(e) {
     setOrder({
       ...order,
       orderType: e.target.value,
     });
   }
+
   function changePrintLabel(e) {
     setOrder({
       ...order,
@@ -108,35 +115,6 @@ export default function App() {
     });
   }
 
-  function contentToList(cont) {
-    const contentList = [];
-    cont.forEach((c) => {
-      for (let step = 0; step < c.ammount; step++) {
-        contentList.push(c.text);
-      }
-    });
-    console.log(contentList);
-    return contentList.filter((el) => {
-      return el !== "";
-    });
-  }
-
-  function printOverIP() {
-    let commandZPL = "";
-    const listOfLabels = contentToList(content);
-    for (let i = 0; i < Math.floor(listOfLabels.length / 3) + 1; i++) {
-      commandZPL +=
-        "^XA^CF0,17^FO145,20^FD" +
-        listOfLabels[3 * i] +
-        "^FS^FO345,25^FD " +
-        listOfLabels[3 * i + 1] +
-        "^FS^FO545,25^FD" +
-        listOfLabels[i + 2] +
-        "^FS^MMC^XZ";
-    }
-    console.log(commandZPL);
-    return commandZPL;
-  }
   return (
     <ChakraProvider>
       <Container centerContent maxHeight="100vh">
@@ -154,7 +132,6 @@ export default function App() {
           emptyContent={emptyContent}
           changeContentText={changeContentText}
           changeContentAmmount={changeContentAmmount}
-          printOverIP={printOverIP}
         />
 
         <AppFooter
@@ -167,3 +144,7 @@ export default function App() {
     </ChakraProvider>
   );
 }
+
+// @TODO:
+// - switch useStates to common reducers, e.g. Order Reducer, Content Reducer, etc.
+// - extract functions to separate util files

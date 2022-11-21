@@ -9,7 +9,20 @@ import {
 } from "@chakra-ui/react";
 import { MdDelete } from "react-icons/md";
 
+
+import { preparePrintPayload } from "utils/preparePrintPayload";
+import { convertContentToList } from "utils/convertContentToList";
+
 export default function OrderContentView(props) {
+
+
+  function handlePrint() {
+    const printContent = convertContentToList(props.content)
+    const printPayload = preparePrintPayload(printContent)
+
+    // printaj
+  }
+
   return (
     <Container m={1}>
       <OrdersList
