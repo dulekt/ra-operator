@@ -14,6 +14,7 @@ export default function App() {
   function handleLogout() {
     setIsLoggedIn(false);
     SetOrderToNull();
+    emptyContent();
   }
 
   const [order, setOrder] = useState({
