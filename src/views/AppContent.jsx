@@ -3,6 +3,7 @@ import OrderTypeView from "views/OrderTypeView";
 import LabelTypeView from "views/LabelTypeView";
 import OrderContentView from "views/OrderContentView";
 import SpecialOrderContentView from "views/SpecialOrderContentView";
+
 export default function AppContent(props) {
   if (!props.isLoggedIn) {
     return (

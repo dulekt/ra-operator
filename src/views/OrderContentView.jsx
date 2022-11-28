@@ -9,7 +9,41 @@ import {
 } from "@chakra-ui/react";
 import { MdDelete } from "react-icons/md";
 
+import { useEffect, useState } from 'react'
+
+
+import { preparePrintPayload } from "utils/preparePrintPayload";
+import { convertContentToList } from "utils/convertContentToList";
+import { print, printViaAPI } from "utils/print";
+
+import { getPrinters } from "utils/getPrinters";
+
 export default function OrderContentView(props) {
+  const [printers, setPrinters] = useState([])
+
+  useEffect(() => {
+    const getPrintersList = async () => {
+      const printersList = await getPrinters()
+
+      console.log('PRINTER LIST', printersList)
+
+      setPrinters(printersList)
+    }
+
+    getPrintersList()
+
+  }, [])
+
+
+  async function handlePrint() {
+    const printContent = convertContentToList(props.content)
+    const printPayload = preparePrintPayload(printContent)
+
+    // print(printPayload)
+    const printerResponse = await printViaAPI(printPayload)
+    console.log('PRINTER RESPONSE', printerResponse)
+  }
+
   return (
     <Container m={1}>
       <OrdersList
@@ -44,11 +78,12 @@ export default function OrderContentView(props) {
           <Button colorScheme="blue" size="sm">
             Zamow
           </Button>
-          <Button colorScheme="blue" size="sm" onClick={props.printOverIP}>
+          <Button colorScheme="blue" size="sm" onClick={handlePrint}>
             Drukuj
           </Button>
         </ButtonGroup>
       </Box>
+      <pre>{JSON.stringify(printers, null, 4)}</pre>
     </Container>
   );
 }
