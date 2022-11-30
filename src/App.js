@@ -1,11 +1,13 @@
 //App.js
 import "App.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Container, ChakraProvider } from "@chakra-ui/react";
 import AppHeader from "components/AppHeader";
 import AppContent from "views/AppContent";
 import AppFooter from "components/AppFooter";
-
+// @TODO:
+// - switch useStates to common reducers, e.g. Order Reducer, Content Reducer, etc.
+// - extract functions to separate util files
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -144,7 +146,3 @@ export default function App() {
     </ChakraProvider>
   );
 }
-
-// @TODO:
-// - switch useStates to common reducers, e.g. Order Reducer, Content Reducer, etc.
-// - extract functions to separate util files

@@ -1,4 +1,5 @@
 import OrdersList from "components/OrdersList";
+import { listPrinters } from "utils/listPrinters";
 import {
   Container,
   Button,
@@ -9,8 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { MdDelete } from "react-icons/md";
 
-import { useEffect, useState } from 'react'
-
+import { useEffect, useState } from "react";
 
 import { preparePrintPayload } from "utils/preparePrintPayload";
 import { convertContentToList } from "utils/convertContentToList";
@@ -19,29 +19,27 @@ import { print, printViaAPI } from "utils/print";
 import { getPrinters } from "utils/getPrinters";
 
 export default function OrderContentView(props) {
-  const [printers, setPrinters] = useState([])
-
+  const [printers, setPrinters] = useState([]);
+  listPrinters();
   useEffect(() => {
     const getPrintersList = async () => {
-      const printersList = await getPrinters()
+      const printersList = await getPrinters();
 
-      console.log('PRINTER LIST', printersList)
+      console.log("PRINTER LIST", printersList);
 
-      setPrinters(printersList)
-    }
+      setPrinters(printersList);
+    };
 
-    getPrintersList()
-
-  }, [])
-
+    getPrintersList();
+  }, []);
 
   async function handlePrint() {
-    const printContent = convertContentToList(props.content)
-    const printPayload = preparePrintPayload(printContent)
+    const printContent = convertContentToList(props.content);
+    const printPayload = preparePrintPayload(printContent);
 
     // print(printPayload)
-    const printerResponse = await printViaAPI(printPayload)
-    console.log('PRINTER RESPONSE', printerResponse)
+    const printerResponse = await printViaAPI(printPayload);
+    console.log("PRINTER RESPONSE", printerResponse);
   }
 
   return (
