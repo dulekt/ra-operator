@@ -17,6 +17,7 @@ import { convertContentToList } from "utils/convertContentToList";
 import { print, printViaAPI } from "utils/print";
 
 import { getPrinters } from "utils/getPrinters";
+import { printToZebra } from "utils/printToZebra";
 
 export default function OrderContentView(props) {
   const [printers, setPrinters] = useState([]);
@@ -76,7 +77,7 @@ export default function OrderContentView(props) {
           <Button colorScheme="blue" size="sm">
             Zamow
           </Button>
-          <Button colorScheme="blue" size="sm" onClick={handlePrint}>
+          <Button colorScheme="blue" size="sm" onClick={printToZebra}>
             Drukuj
           </Button>
         </ButtonGroup>
