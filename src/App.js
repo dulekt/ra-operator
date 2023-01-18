@@ -5,6 +5,7 @@ import { Container, ChakraProvider } from "@chakra-ui/react";
 import AppHeader from "components/AppHeader";
 import AppContent from "views/AppContent";
 import AppFooter from "components/AppFooter";
+import { useEffect } from "react";
 // @TODO:
 // - switch useStates to common reducers, e.g. Order Reducer, Content Reducer, etc.
 // - extract functions to separate util files
@@ -18,6 +19,16 @@ export default function App() {
     setIsLoggedIn(false);
     SetOrderToNull();
     emptyContent();
+  }
+  function back() {
+    emptyContent();
+    setOrder({
+      ...order,
+      orderType: "",
+      labelType: "",
+      category: "",
+      description: "",
+    });
   }
 
   const [order, setOrder] = useState({
@@ -37,7 +48,7 @@ export default function App() {
     },
   ]);
 
-  // useEffect(() => console.log(order, content));
+  useEffect(() => console.log(order, content));
 
   function changeContentText(id, e) {
     setContent(
@@ -58,14 +69,16 @@ export default function App() {
   }
 
   function addEmptyContent() {
-    setContent([
-      ...content,
-      {
-        id: content.at(-1).id + 1,
-        text: "",
-        ammount: 1,
-      },
-    ]);
+    if (content.at(-1).text !== "") {
+      setContent([
+        ...content,
+        {
+          id: content.at(-1).id + 1,
+          text: "",
+          ammount: 1,
+        },
+      ]);
+    }
   }
 
   function emptyContent() {
@@ -120,11 +133,13 @@ export default function App() {
   return (
     <ChakraProvider>
       <Container centerContent maxHeight="100vh">
-        <AppHeader />
+        <AppHeader order={order} isLoggedIn={isLoggedIn} back={back} />
 
         <AppContent
           order={order}
           content={content}
+          orderType={order.orderType}
+          labelType={order.labelType}
           isLoggedIn={isLoggedIn}
           changeOrderNumber={changeOrderNumber}
           changeOrderType={changeOrderType}
@@ -134,6 +149,7 @@ export default function App() {
           emptyContent={emptyContent}
           changeContentText={changeContentText}
           changeContentAmmount={changeContentAmmount}
+          back={back}
         />
 
         <AppFooter
@@ -141,6 +157,7 @@ export default function App() {
           isLoggedIn={isLoggedIn}
           handleLogin={handleLogin}
           handleLogout={handleLogout}
+          back={back}
         />
       </Container>
     </ChakraProvider>

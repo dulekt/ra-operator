@@ -1,4 +1,4 @@
-import { Card, HStack, Input } from "@chakra-ui/react";
+import { Card, HStack, Input, Button } from "@chakra-ui/react";
 import OrderAmmountInput from "components/OrderAmmountInput";
 export default function OrdersList(props) {
   return (
@@ -13,6 +13,7 @@ export default function OrdersList(props) {
               value={contentObj.text}
               onChange={(e) => props.changeContentText(contentObj.id, e)}
             />
+
             <OrderAmmountInput
               ammount={contentObj.ammount}
               changeContentAmmount={props.changeContentAmmount}

@@ -40,12 +40,16 @@ export default function AppContent(props) {
     return (
       <>
         <OrderContentView
+          order={props.order}
           content={props.content}
+          orderType={props.orderType}
+          labelType={props.labelType}
           changeContentText={props.changeContentText}
           changeContentAmmount={props.changeContentAmmount}
           addEmptyContent={props.addEmptyContent}
           emptyContent={props.emptyContent}
           printOverIP={props.printOverIP}
+          removeContent={props.removeContent}
         />
       </>
     );
@@ -53,11 +57,16 @@ export default function AppContent(props) {
     return (
       <>
         <OrderContentView
+          order={props.order}
           content={props.content}
+          orderType={props.orderType}
+          labelType={props.labelType}
           changeContentText={props.changeContentText}
           changeContentAmmount={props.changeContentAmmount}
           addEmptyContent={props.addEmptyContent}
           emptyContent={props.emptyContent}
+          printOverIP={props.printOverIP}
+          removeContent={props.removeContent}
         />
       </>
     );

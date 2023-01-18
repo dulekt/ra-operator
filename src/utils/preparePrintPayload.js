@@ -1,48 +1,43 @@
 export function preparePrintPayload(listOfLabels) {
+  const prefix = "^";
+  const beginLabelDefinition = `${prefix}XA`;
 
-    // Start, change font, position on paper, being label data
-    const command1 = '^XA^CF0,17^FO145,25^FD'
+  const changeFont = (fontName, height, width) =>
+    `${prefix}CF${fontName}${height ? `,${height}` : ""}${
+      width ? `,${width}` : ""
+    }`;
 
-    // End label data, new position on paper, being new label data
-    const command2 = '^FS^FO345,25^FD '
+  const setPosition = (x, y, alignment) =>
+    `${prefix}FO${x}${y ? `,${y}` : ""}${alignment ? `,${alignment}` : ""}`;
 
-    // End label data, new position on paper, begin new label data
-    const command3 = '^FS^FO545,25^FD'
+  const mode = (mode) => `${prefix}MM${mode}`;
 
-    // End label data, cut label, end
-    const command4 = '^FS^MMC^XZ'
+  const cut = "C";
 
-    const prefix = '^'
-    const beginLabelDefinition = `${prefix}XA`
+  const labelStart = `${prefix}FD`;
+  const labelEnd = `${prefix}FS`;
+  const endLabelDefinition = `${prefix}XZ`;
 
-    const changeFont = (fontName, height, width) =>
-        `${prefix}CF${fontName}${height ? `,${height}` : ''}${width ? `,${width}` : ''}`
+  // For list of label strings, create groups of 3 and join them with the commands
+  const groupedLabels = listOfLabels.reduce((acc, item, index, array) => {
+    if (index % 3 === 0) {
+      acc.push(array.slice(index, index + 3));
+    }
+    return acc;
+  }, []);
 
-    const setPosition = (x, y, alignment) => `${prefix}FO${x}${y ? `,${y}` : ''}${alignment ? `,${alignment}` : ''}`
-
-    const mode = mode => `${prefix}MM${mode}`
-
-    const cut = 'C'
-
-    const labelStart = `${prefix}FD`
-    const labelEnd = `${prefix}FS`
-    const endLabelDefinition = `${prefix}XZ`
-
-    // For list of label strings, create groups of 3 and join them with the commands
-    const groupedLabels = listOfLabels.reduce((acc, item, index, array) => {
-        if (index % 3 === 0) {
-            acc.push(array.slice(index, index + 3))
+  const allLabels = groupedLabels.map(
+    (group) =>
+      `${beginLabelDefinition}${changeFont(0, 50)}${group.map(
+        (label, index) => {
+          const offset = 145 + index * 200;
+          return `${setPosition(
+            offset,
+            25
+          )} ${labelStart} ${label} ${labelEnd}`;
         }
-        return acc
-    }, [])
+      )}`
+  );
 
-    const allLabels = groupedLabels.map(
-        group =>
-            `${beginLabelDefinition}${changeFont(0, 50)}${group.map((label, index) => {
-                const offset = 145 + index * 200
-                return `${setPosition(offset, 25)}${labelStart}${label}${labelEnd}`
-            })}${endLabelDefinition}`
-    )
-
-    return `${allLabels}${mode(cut)}`
+  return ` ${allLabels} ${mode(cut)} ${endLabelDefinition}`;
 }

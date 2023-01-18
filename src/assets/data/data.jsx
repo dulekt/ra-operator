@@ -116,3 +116,4 @@ export const names = [
   "uulikow",
   "wpilare",
 ];
+export const printableLabels = ["80006-269-04", "T9957-018"];
