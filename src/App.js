@@ -38,6 +38,7 @@ export default function App() {
     labelType: "",
     category: "",
     description: "",
+    workcenter: "",
   });
 
   const [content, setContent] = useState([
@@ -108,6 +109,12 @@ export default function App() {
       user: e.target.value,
     });
   }
+  function changeWorkcenter(e) {
+    setOrder({
+      ...order,
+      workcenter: e.target.value,
+    });
+  }
 
   function changeOrderNumber(e) {
     setOrder({
@@ -145,6 +152,7 @@ export default function App() {
           changeOrderType={changeOrderType}
           changePrintLabel={changePrintLabel}
           changeUser={changeUser}
+          changeWorkcenter={changeWorkcenter}
           addEmptyContent={addEmptyContent}
           emptyContent={emptyContent}
           changeContentText={changeContentText}

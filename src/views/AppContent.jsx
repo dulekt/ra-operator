@@ -9,6 +9,7 @@ export default function AppContent(props) {
     return (
       <LoginView
         changeUser={props.changeUser}
+        changeWorkcenter={props.changeWorkcenter}
         changeOrderNumber={props.changeOrderNumber}
         order={props.order}
       />

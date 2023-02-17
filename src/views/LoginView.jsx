@@ -6,12 +6,24 @@ import {
   InputLeftAddon,
 } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
-import { names } from "assets/data/data.jsx";
+import { names, workcenters } from "assets/data/data.jsx";
 
 export default function LogInView(props) {
   return (
     <ChakraProvider>
       <Stack direction="column" spacing={1} align="center">
+        <Select
+          onChange={props.changeWorkcenter}
+          variant="flushed"
+          placeholder="Wybierz Stanowisko"
+        >
+          {workcenters.map((workcenter) => (
+            <option key={workcenter} value={workcenter}>
+              {workcenter}
+            </option>
+          ))}
+        </Select>
+
         <Select
           onChange={props.changeUser}
           variant="flushed"
@@ -27,7 +39,7 @@ export default function LogInView(props) {
           <InputLeftAddon children="Order:" />
           <Input
             variant="flushed"
-            placeholder="Numer zlecenia"
+            placeholder="Wpisz nr. zlecenia"
             value={props.order.orderNumber}
             onChange={props.changeOrderNumber}
           />

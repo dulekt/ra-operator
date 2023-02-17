@@ -4,9 +4,7 @@ const labelTypes = {
     "LAT 22 (12)",
     "LAT 22 (6)",
     "LAT 8",
-    "RU-4001",
-    "RU-4002",
-    "RU-4005",
+
     "RU-4007",
     "RU-8501",
     "RU-8557",
@@ -117,3 +115,11 @@ export const names = [
   "wpilare",
 ];
 export const printableLabels = ["80006-269-04", "T9957-018"];
+export const workcenters = [
+  "MVD WIR",
+  "MVD SUBS",
+  "MVD FA",
+  "MCC FA",
+  "MCC FRAME",
+  "MCC MODULES",
+];
