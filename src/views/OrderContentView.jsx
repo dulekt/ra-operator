@@ -12,7 +12,7 @@ import { MdDelete } from "react-icons/md";
 import { preparePrintPayload } from "utils/preparePrintPayload";
 import { convertContentToList } from "utils/convertContentToList";
 import { printViaAPI } from "utils/print";
-import { printableLabels } from "assets/data/data";
+import { getPrintableLabels } from "assets/data/data";
 
 export default function OrderContentView(props) {
   const labelType = props.labelType;
@@ -41,6 +41,16 @@ export default function OrderContentView(props) {
     const printerResponse = await printViaAPI(printPayload);
     console.log("PRINTER RESPONSE", printerResponse);
   }
+
+  const printableLabels = ["223"];
+  //
+  getPrintableLabels(props.order.workcenter).then((labels) => {
+    labels.forEach((label) => {
+      printableLabels.push(label);
+    });
+  });
+  //get printable labels with useEffect
+
   return (
     <Container m={1}>
       <div>
@@ -80,12 +90,17 @@ export default function OrderContentView(props) {
           <Button colorScheme="blue" size="sm" onClick={sendOrderToServer}>
             Zamow
           </Button>
-
-          {printableLabels.includes(labelType) && (
-            <Button colorScheme="blue" size="sm" onClick={handlePrint}>
-              Drukuj
-            </Button>
-          )}
+          <Button colorScheme="blue" size="sm" onClick={handlePrint}>
+            Drukuj
+          </Button>
+          printable labels
+          {
+            <ol>
+              {printableLabels.map((label) => (
+                <li>{label}</li>
+              ))}
+            </ol>
+          }
         </ButtonGroup>
       </Box>
     </Container>

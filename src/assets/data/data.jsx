@@ -123,3 +123,33 @@ export const workcenters = [
   "MCC FRAME",
   "MCC MODULES",
 ];
+export async function getNames() {
+  const response = await fetch("http://localhost:5000/users");
+  const namesJSON = await response.json();
+  const names = [];
+  namesJSON.forEach((name) => {
+    names.push(name.username);
+  });
+  console.log(names);
+  return names;
+}
+
+export async function getWorkcenters() {
+  const response = await fetch("http://localhost:5000/workcenters");
+  const workcentersJSON = await response.json();
+  const workcenters = [];
+  workcentersJSON.forEach((WC) => {
+    workcenters.push(WC.workcenter);
+  });
+  console.log(workcenters);
+  return workcenters;
+}
+
+export async function getPrintableLabels(workcenter) {
+  const response = await fetch(
+    `http://localhost:5000/workcenters/${workcenter}`
+  );
+  const printableLabels = await response.json();
+  console.log(printableLabels);
+  return printableLabels;
+}
