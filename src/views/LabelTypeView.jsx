@@ -1,7 +1,7 @@
-import { Button, SimpleGrid, Box, Container } from "@chakra-ui/react";
-import labelTypes from "assets/data/data";
+import { Button, SimpleGrid, Container } from "@chakra-ui/react";
 
 export default function SetLabelView(props) {
+  const labelTypes = props.labelTypes;
   const labels = labelTypes[props.order.orderType];
   return (
     <Container>

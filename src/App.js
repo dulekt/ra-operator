@@ -12,6 +12,7 @@ import { useEffect } from "react";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   function handleLogin() {
     setIsLoggedIn(true);
   }
@@ -128,6 +129,7 @@ export default function App() {
       ...order,
       orderType: e.target.value,
     });
+    console.log(order.orderType);
   }
 
   function changePrintLabel(e) {

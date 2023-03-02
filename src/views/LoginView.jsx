@@ -12,6 +12,7 @@ import { getWorkcenters, getNames } from "assets/data/data.jsx";
 export default function LogInView(props) {
   const [names, setNames] = useState([]);
   const [workcenters, setWorkcenters] = useState([]);
+
   useEffect(() => {
     getNames().then((names) => setNames(names));
     getWorkcenters().then((workcenters) => setWorkcenters(workcenters));

@@ -1,20 +1,4 @@
 const labelTypes = {
-  Naklejki: [
-    "80006-269-04",
-    "LAT 22 (12)",
-    "LAT 22 (6)",
-    "LAT 8",
-
-    "RU-4007",
-    "RU-8501",
-    "RU-8557",
-    "T9957-018",
-    "T9957-023",
-    "T9957-024",
-    "T9957-025",
-    "T9957-033",
-  ],
-
   "Oznaczenia plastikowe": [
     "1 sleeve tag",
     "30 terminal MCC",
@@ -49,80 +33,6 @@ const labelTypes = {
 };
 export default labelTypes;
 
-export const names = [
-  "achlech",
-  "aduda",
-  "adutkie",
-  "akrzemi",
-  "alubeck",
-  "amusial",
-  "aolechn",
-  "aornat",
-  "aradzie",
-  "arogas",
-  "asoltys",
-  "bdytko",
-  "dblaszc",
-  "dciach",
-  "dpostoj",
-  "dstepan",
-  "dtomasi",
-  "dwieczo",
-  "dwyrzyk",
-  "eciazyn",
-  "eludzen",
-  "ibara",
-  "iradema",
-  "jptak",
-  "kbasiag",
-  "kbednar",
-  "kfudale",
-  "khibner",
-  "kmajda",
-  "kpiastk",
-  "krygula",
-  "ksewera",
-  "kwrobel",
-  "kzietar",
-  "lgrodzi",
-  "lmirek",
-  "mbartko",
-  "mbatko",
-  "mbugaj",
-  "mjawors1",
-  "mcieciu",
-  "mkurek1",
-  "mmrozek",
-  "mpalent",
-  "mszyman",
-  "mtrzcio",
-  "mulikow",
-  "mwojdyl",
-  "mzakrze",
-  "nwawrzy",
-  "ohriuka",
-  "pgabrys",
-  "pplucin",
-  "rbiadac",
-  "rfraszk",
-  "rjeglor",
-  "sadamie",
-  "sdudek",
-  "tpardon",
-  "trogals",
-  "tzalins",
-  "uulikow",
-  "wpilare",
-];
-export const printableLabels = ["80006-269-04", "T9957-018"];
-export const workcenters = [
-  "MVD WIR",
-  "MVD SUBS",
-  "MVD FA",
-  "MCC FA",
-  "MCC FRAME",
-  "MCC MODULES",
-];
 export async function getNames() {
   const response = await fetch("http://localhost:5000/users");
   const namesJSON = await response.json();
@@ -141,7 +51,6 @@ export async function getWorkcenters() {
   workcentersJSON.forEach((WC) => {
     workcenters.push(WC.workcenter);
   });
-  console.log(workcenters);
   return workcenters;
 }
 
@@ -150,6 +59,20 @@ export async function getPrintableLabels(workcenter) {
     `http://localhost:5000/workcenters/${workcenter}`
   );
   const printableLabels = await response.json();
-  console.log(printableLabels);
   return printableLabels;
 }
+// get array of labels
+export async function getLabelTypes() {
+  const response = await fetch("http://localhost:5000/labels");
+  const labelsJSON = await response.json();
+
+  const labels = [];
+  labelsJSON.forEach((label) => {
+    labels.push(label.label);
+  });
+  labelTypes.Naklejki = labels;
+  console.log("LT", labelTypes);
+  return labelTypes;
+}
+
+//todo plastic marks and special orders
