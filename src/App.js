@@ -1,21 +1,27 @@
 //App.js
 import "App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, ChakraProvider } from "@chakra-ui/react";
 import AppHeader from "components/AppHeader";
 import AppContent from "views/AppContent";
 import AppFooter from "components/AppFooter";
-import { useEffect } from "react";
+import { getLabelTypes } from "assets/data/data";
 // @TODO:
 // - switch useStates to common reducers, e.g. Order Reducer, Content Reducer, etc.
 // - extract functions to separate util files
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [labelsAndTypes, setLabelTypes] = useState([]);
 
+  useEffect(() => {
+    getLabelTypes().then((labels) => setLabelTypes(labels));
+  }, []);
+  useEffect(() => console.log(order, content));
   function handleLogin() {
     setIsLoggedIn(true);
   }
+
   function handleLogout() {
     setIsLoggedIn(false);
     SetOrderToNull();
@@ -49,8 +55,6 @@ export default function App() {
       ammount: 1,
     },
   ]);
-
-  useEffect(() => console.log(order, content));
 
   function changeContentText(id, e) {
     setContent(
@@ -160,6 +164,7 @@ export default function App() {
           changeContentText={changeContentText}
           changeContentAmmount={changeContentAmmount}
           back={back}
+          labelsAndTypes={labelsAndTypes}
         />
 
         <AppFooter

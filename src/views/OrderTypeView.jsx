@@ -1,17 +1,11 @@
 import { Button, Stack } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { getLabelTypes } from "assets/data/data";
+
 //import labelTypes from "assets/data/data";
 import "typeface-roboto";
 
 export default function OrderTypeView(props) {
-  const [labelTypes, setLabelTypes] = useState([]);
-  console.log("labelTypes", labelTypes);
-  useEffect(() => {
-    getLabelTypes().then((labels) => setLabelTypes(labels));
-  }, []);
-
+  const labelTypes = props.labelsAndTypes;
   const orderTypes = Object.keys(labelTypes);
   const orderTypeButtons = orderTypes.map((type) => (
     <Button

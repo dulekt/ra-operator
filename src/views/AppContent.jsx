@@ -22,6 +22,7 @@ export default function AppContent(props) {
         <OrderTypeView
           order={props.order}
           changeOrderType={props.changeOrderType}
+          labelsAndTypes={props.labelsAndTypes}
         />
       </>
     );
@@ -33,6 +34,7 @@ export default function AppContent(props) {
         <LabelTypeView
           order={props.order}
           changePrintLabel={props.changePrintLabel}
+          labelsAndTypes={props.labelsAndTypes}
         />
       </>
     );
@@ -51,6 +53,7 @@ export default function AppContent(props) {
           emptyContent={props.emptyContent}
           printOverIP={props.printOverIP}
           removeContent={props.removeContent}
+          labelsAndTypes={props.labelsAndTypes}
         />
       </>
     );
@@ -68,13 +71,18 @@ export default function AppContent(props) {
           emptyContent={props.emptyContent}
           printOverIP={props.printOverIP}
           removeContent={props.removeContent}
+          labelsAndTypes={props.labelsAndTypes}
         />
       </>
     );
   } else {
     return (
       <>
-        <SpecialOrderContentView order={props.order} content={props.content} />
+        <SpecialOrderContentView
+          order={props.order}
+          content={props.content}
+          labelsAndTypes={props.labelsAndTypes}
+        />
       </>
     );
   }

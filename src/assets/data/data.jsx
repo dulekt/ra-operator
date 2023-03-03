@@ -1,4 +1,16 @@
 const labelTypes = {
+  Naklejki: [
+    "80006-269-04",
+    "LAT 22 (12)",
+    "LAT 22 (6)",
+    "RU-8557",
+    "T9957-018",
+    "T9957-023",
+    "T9957-024",
+    "T9957-025",
+    "T9957-033",
+  ],
+
   "Oznaczenia plastikowe": [
     "1 sleeve tag",
     "30 terminal MCC",
@@ -71,8 +83,5 @@ export async function getLabelTypes() {
     labels.push(label.label);
   });
   labelTypes.Naklejki = labels;
-  console.log("LT", labelTypes);
   return labelTypes;
 }
-
-//todo plastic marks and special orders
