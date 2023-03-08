@@ -13,7 +13,7 @@ export default function OrderAmmountInput(props) {
         size="sm"
         defaultValue={1}
         min={1}
-        max={10}
+        max={13}
         value={props.ammount}
         onChange={(num) => props.changeContentAmmount(props.contentId, num)}
       >

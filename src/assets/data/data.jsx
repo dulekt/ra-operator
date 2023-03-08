@@ -11,14 +11,7 @@ const labelTypes = {
     "T9957-033",
   ],
 
-  "Oznaczenia plastikowe": [
-    "1 sleeve tag",
-    "30 terminal MCC",
-    "34 terminale PF6000",
-    "51 terminale MVD J4",
-    "54 terminale MVD W10",
-    "55 terminale ABB",
-  ],
+  "Oznaczenia plastikowe": ["1", "30", "34", "51", "54", "55"],
 
   Grawerki: [
     "MCC legend plate",
