@@ -7,7 +7,7 @@ export function preparePrintPayload(listOfLabels) {
 
     const setPosition = (x, y, alignment) => `${prefix}FO${x}${y ? `,${y}` : ''}${alignment ? `,${alignment}` : ''}`;
 
-    const mode = mode => `${prefix}MM${mode}`;
+    const mode = `${prefix}MM${mode}`;
 
     const cut = 'C';
 

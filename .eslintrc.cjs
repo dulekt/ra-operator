@@ -35,10 +35,12 @@ module.exports = {
         assert: true,
         describe: true,
     },
-    extends: ['airbnb-base', 'prettier', 'plugin:react/jsx-runtime'],
+    parserOptions: { ecmaVersion: 2020, sourceType: 'module' },
+    extends: ['airbnb-base', 'prettier', 'plugin:react/recommended'],
     plugins: ['prettier', 'import', 'simple-import-sort', 'react', 'react-hooks'],
     rules: {
         curly: ['error', 'all'],
+        'react/prop-types': 0,
         'no-shadow': [
             'error',
             {

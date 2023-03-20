@@ -1,4 +1,6 @@
 // import labelTypes from "assets/data/data";
+import { Button, ChakraProvider, Stack } from '@chakra-ui/react';
+
 import 'typeface-roboto';
 
 export default function OrderTypeView(props) {
@@ -11,7 +13,7 @@ export default function OrderTypeView(props) {
             colorScheme="blue"
             key={type}
             value={type}
-            onClick={types => props.changeOrderType(type)}
+            onClick={e => props.changeOrderType(e)}
         >
             {type}
         </Button>
