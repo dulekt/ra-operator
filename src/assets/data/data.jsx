@@ -1,3 +1,6 @@
+import server_data from '@/assets/data/server_data';
+
+const { ip, port } = server_data();
 const labelTypes = {
     Naklejki: [
         '80006-269-04',
@@ -11,20 +14,26 @@ const labelTypes = {
         'T9957-033',
     ],
 
-    'Oznaczenia plastikowe': ['1', '30', '34', '51', '54', '55'],
-
+    'Oznaczenia plastikowe': [
+        '1-Sleeve tag',
+        '30-Terminal MCC',
+        '34-Terminal PF6000',
+        '51-Terminale MVD J4',
+        '54-Terminale MVD W10',
+        '55-Terminale ABB',
+    ],
     Grawerki: [
         'MCC legend plate',
-        'MCC tabliczka znamionowa',
         'MVD legend plate',
         'MCC door nameplate',
-        'MCC master nameplate',
-        'MVD legend plate metalowy',
-        'MVD opis urządzenia klej',
-        'inne',
         'MVD door nameplate',
+        'MCC master nameplate',
         'MVD master nameplate',
+        'MVD opis urządzenia klej',
         'MVD opis urządzenia śruby',
+        'MCC tabliczka znamionowa',
+        'MVD legend plate metalowy',
+        'inne',
     ],
 
     Wydruki: ['Schemat El.', 'Rysunek Mech.', 'MCC unit ID', 'MVD Test docs', 'MCC Switch label', 'Inne'],
@@ -33,7 +42,7 @@ const labelTypes = {
 export default labelTypes;
 
 export async function getNames() {
-    const response = await fetch('http://localhost:5000/users');
+    const response = await fetch(`http://${ip}:${port}/users`);
     const namesJSON = await response.json();
     const names = [];
     namesJSON.forEach(name => {
@@ -46,7 +55,7 @@ export async function getNames() {
 }
 
 export async function getWorkcenters() {
-    const response = await fetch('http://localhost:5000/workcenters');
+    const response = await fetch(`http://${ip}:${port}/workcenters`);
     const workcentersJSON = await response.json();
     const workcenters = [];
     workcentersJSON.forEach(WC => {
@@ -57,7 +66,7 @@ export async function getWorkcenters() {
 }
 
 export async function getPrintableLabels(workcenter) {
-    const response = await fetch(`http://localhost:5000/workcenters/${workcenter}`);
+    const response = await fetch(`http://${ip}:${port}/workcenters/${workcenter}`);
     const printableLabels = await response.json();
 
     return printableLabels;
@@ -65,7 +74,7 @@ export async function getPrintableLabels(workcenter) {
 
 // get array of labels
 export async function getLabelTypes() {
-    const response = await fetch('http://localhost:5000/labels');
+    const response = await fetch(`http://${ip}:${port}/labels`);
     const labelsJSON = await response.json();
 
     const labels = [];

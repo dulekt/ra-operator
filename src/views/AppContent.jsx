@@ -1,3 +1,4 @@
+import { Text } from '@chakra-ui/react';
 import LabelTypeView from 'views/LabelTypeView';
 import LoginView from 'views/LoginView';
 import OrderContentView from 'views/OrderContentView';
@@ -19,7 +20,7 @@ export default function AppContent(props) {
     if (props.order.orderType.length < 1) {
         return (
             <>
-                <p>Zamow:</p>
+                <Text>Zamow:</Text>
                 <OrderTypeView
                     order={props.order}
                     changeOrderType={props.changeOrderType}

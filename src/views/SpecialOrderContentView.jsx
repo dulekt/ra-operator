@@ -1,3 +1,9 @@
+import { Button, Container, Text, Textarea } from '@chakra-ui/react';
+
+import server_data from '@/assets/data/server_data';
+
+const { ip, port } = server_data();
+
 export default function SpecialOrderContentView(props) {
     async function sendOrderToServer() {
         // save text from textarea to order.description
@@ -6,7 +12,7 @@ export default function SpecialOrderContentView(props) {
             description: orderDescription,
         });
 
-        const response = await fetch('http://localhost:5000/orders', {
+        const response = await fetch(`http://${ip}:${port}/orders`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -15,13 +21,16 @@ export default function SpecialOrderContentView(props) {
             body: JSON.stringify(orderPlusContent),
         });
 
+        console.log(response);
+
         document.getElementById('orderDescription').value =
             'ZAMÓWIONE, \nnapisz nowe zamówienie \nalbo wyloguj się \n ';
     }
 
     return (
         <Container m={1}>
-            <h1>Zamowienia specjalne ({props.order.orderType})</h1>
+            <Text fontSize="l">{props.order.orderType}</Text>
+            <Text fontWeight="bold"> {props.order.labelType}</Text>
             <Textarea id="orderDescription" placeholder="Opis zamówienia..." />
             <Button colorScheme="blue" size="sm" onClick={sendOrderToServer}>
                 Zamów

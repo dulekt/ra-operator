@@ -7,19 +7,19 @@ export default function SetLabelView(props) {
 
     return (
         <Container>
-            <SimpleGrid columns={2} minChildWidth="120px" spacing={2}>
+            <SimpleGrid columns={2} minChildWidth="150px" spacing={2}>
                 {isLoading ? (
                     <Spinner />
                 ) : (
                     labels?.map(label => (
                         <Button
                             colorScheme="blue"
-                            size="sm"
+                            size="md"
                             key={label}
                             value={label}
                             onClick={e => props.changePrintLabel(e)}
                         >
-                            {label.slice(0, 20)}
+                            {label.slice(0, 25)}
                         </Button>
                     ))
                 )}

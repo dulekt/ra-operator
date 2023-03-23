@@ -4,8 +4,12 @@ import OrdersList from 'components/OrdersList';
 import { convertContentToList } from 'utils/convertContentToList';
 import { preparePrintPayload } from 'utils/preparePrintPayload';
 import { printViaAPI } from 'utils/print';
+
 // todo: hide print button if the label is not printable in that workcenter
 // import { getPrintableLabels } from "assets/data/data";
+import server_data from '@/data/server_data';
+
+const { ip, port } = server_data();
 
 export default function OrderContentView(props) {
     const { labelType } = props;
@@ -16,7 +20,7 @@ export default function OrderContentView(props) {
             content: contentList,
         });
 
-        const response = await fetch('http://localhost:5000/orders', {
+        const response = await fetch(`http://${ip}:${port}/orders`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -40,7 +44,7 @@ export default function OrderContentView(props) {
     return (
         <Container m={1}>
             <div>
-                <b>Username:</b> {props.order.user}{' '}
+                <b>Username:</b> {props?.order?.user}{' '}
             </div>
             <div className="orderType">{`${orderType} : ${labelType}`}</div>
             <OrdersList
