@@ -1,8 +1,9 @@
 import { Button, Container, Text, Textarea } from '@chakra-ui/react';
 
-import server_data from '@/assets/data/server_data';
 
-const { ip, port } = server_data();
+
+const ip = '10.76.18.176'
+const port = '5000'
 
 export default function SpecialOrderContentView(props) {
     async function sendOrderToServer() {

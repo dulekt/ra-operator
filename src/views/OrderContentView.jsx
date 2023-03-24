@@ -7,9 +7,8 @@ import { printViaAPI } from 'utils/print';
 
 // todo: hide print button if the label is not printable in that workcenter
 // import { getPrintableLabels } from "assets/data/data";
-import server_data from '@/data/server_data';
-
-const { ip, port } = server_data();
+const ip = '10.76.18.176'
+const port = '5000'
 
 export default function OrderContentView(props) {
     const { labelType } = props;

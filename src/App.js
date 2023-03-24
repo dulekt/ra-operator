@@ -16,10 +16,14 @@ export default function App() {
     const [labelsAndTypes, setLabelTypes] = useState([]);
 
     useEffect(() => {
+        console.log('fetching labels');
         getLabelTypes().then(labels => setLabelTypes(labels));
+        console.log('labels', labelsAndTypes);
     }, []);
 
-    useEffect(() => console.log(order, content));
+    useEffect(
+        () => {console.log(order, content),
+    console.log('labels', labelsAndTypes)});
 
     function handleLogin() {
         setIsLoggedIn(true);
