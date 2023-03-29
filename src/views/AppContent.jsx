@@ -21,11 +21,7 @@ export default function AppContent(props) {
         return (
             <>
                 <Text>Zamow:</Text>
-                <OrderTypeView
-                    order={props.order}
-                    changeOrderType={props.changeOrderType}
-                    labelsAndTypes={props.labelsAndTypes}
-                />
+                <OrderTypeView order={props.order} changeOrderType={props.changeOrderType} />
             </>
         );
     }
@@ -34,11 +30,7 @@ export default function AppContent(props) {
         return (
             <>
                 <p>Zamow:</p>
-                <LabelTypeView
-                    order={props.order}
-                    changePrintLabel={props.changePrintLabel}
-                    labelsAndTypes={props.labelsAndTypes}
-                />
+                <LabelTypeView order={props.order} changePrintLabel={props.changePrintLabel} />
             </>
         );
     }
@@ -77,7 +69,6 @@ export default function AppContent(props) {
                     emptyContent={props.emptyContent}
                     printOverIP={props.printOverIP}
                     removeContent={props.removeContent}
-                    labelsAndTypes={props.labelsAndTypes}
                 />
             </>
         );
@@ -85,11 +76,7 @@ export default function AppContent(props) {
 
     return (
         <>
-            <SpecialOrderContentView
-                order={props.order}
-                content={props.content}
-                labelsAndTypes={props.labelsAndTypes}
-            />
+            <SpecialOrderContentView order={props.order} content={props.content} />
         </>
     );
 }

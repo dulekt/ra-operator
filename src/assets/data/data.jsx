@@ -1,10 +1,7 @@
-
-const ip = '10.76.18.176'
-const port = '5000'
+const ip = '10.76.18.176';
+const port = '5000';
 const labelTypes = {
-    Naklejki: [
-        '80006-269-04',
-    ],
+    Naklejki: [],
 
     'Oznaczenia plastikowe': [
         '1-Sleeve tag',
@@ -34,18 +31,22 @@ const labelTypes = {
 export default labelTypes;
 
 export async function getLabelTypes() {
-    const response = await fetch(`http://${ip}:${port}/labels`);
-    const labelsJSON = await response.json();
-
-    const labels = [];
-    labelsJSON.forEach(label => {
-        labels.push(label.label);
-    });
+    const labels = ['no labels'];
+    try {
+        const response = await fetch(`http://${ip}:${port}/labels`);
+        const labelsJSON = await response.json();
+        labelsJSON.forEach(label => {
+            labels.push(label.label);
+        });
+    } catch (error) {
+        console.log(error);
+    }
 
     labelTypes.Naklejki = labels;
 
     return labelTypes;
 }
+
 export async function getNames() {
     const response = await fetch(`http://${ip}:${port}/users`);
     const namesJSON = await response.json();
@@ -57,7 +58,6 @@ export async function getNames() {
     } catch (error) {
         console.log(error);
     }
-
 
     console.log(names);
 
@@ -81,5 +81,3 @@ export async function getPrintableLabels(workcenter) {
 
     return printableLabels;
 }
-
-

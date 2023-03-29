@@ -1,7 +1,6 @@
 // App.js
 import { useEffect, useState } from 'react';
 import { ChakraProvider, Container } from '@chakra-ui/react';
-import { getLabelTypes } from 'assets/data/data';
 import AppFooter from 'components/AppFooter';
 import AppHeader from 'components/AppHeader';
 import AppContent from 'views/AppContent';
@@ -13,18 +12,6 @@ import 'App.css';
 
 export default function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [labelsAndTypes, setLabelTypes] = useState([]);
-
-    useEffect(() => {
-        console.log('fetching labels');
-        getLabelTypes().then(labels => setLabelTypes(labels));
-        console.log('labels', labelsAndTypes);
-    }, []);
-
-    useEffect(
-        () => {console.log(order, content),
-    console.log('labels', labelsAndTypes)});
-
     function handleLogin() {
         setIsLoggedIn(true);
     }
@@ -58,6 +45,10 @@ export default function App() {
         description: '',
         workcenter: '',
     });
+
+    useEffect(() => {
+        console.log(order);
+    }, [order]);
 
     const [content, setContent] = useState([
         {
@@ -169,7 +160,6 @@ export default function App() {
                     changeContentText={changeContentText}
                     changeContentAmmount={changeContentAmmount}
                     back={back}
-                    labelsAndTypes={labelsAndTypes}
                 />
 
                 <AppFooter

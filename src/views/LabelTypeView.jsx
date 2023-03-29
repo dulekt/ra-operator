@@ -1,14 +1,19 @@
-import { Button, Container, SimpleGrid, Spinner } from '@chakra-ui/react';
+import { Button, Container, SimpleGrid, Spinner, Text } from '@chakra-ui/react';
+import useData from 'hooks/useData';
 
 export default function SetLabelView(props) {
-    const labelTypes = props.labelsAndTypes;
+    const { labelTypes } = useData();
     const labels = labelTypes?.[props.order?.orderType];
-    const isLoading = !labels.length;
 
     return (
         <Container>
             <SimpleGrid columns={2} minChildWidth="150px" spacing={2}>
-                {isLoading ? (
+                {!labels?.length && (
+                    <Text fontSize="l" color="red.500">
+                        No labels defined
+                    </Text>
+                )}
+                {!labels?.length ? (
                     <Spinner />
                 ) : (
                     labels?.map(label => (
@@ -19,7 +24,7 @@ export default function SetLabelView(props) {
                             value={label}
                             onClick={e => props.changePrintLabel(e)}
                         >
-                            {label.slice(0, 25)}
+                            {label?.slice(0, 25)}
                         </Button>
                     ))
                 )}
