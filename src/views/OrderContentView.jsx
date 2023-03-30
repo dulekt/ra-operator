@@ -73,9 +73,11 @@ export default function OrderContentView(props) {
                     <Button colorScheme="blue" size="sm" onClick={sendOrderToServer}>
                         Zamow
                     </Button>
-                    <Button colorScheme="blue" size="sm" onClick={handlePrint}>
+                    {/*
+//todo show only when printers are available
+                   <Button colorScheme="blue" size="sm" onClick={handlePrint}>
                         Drukuj
-                    </Button>
+    </Button> */}
                 </ButtonGroup>
             </Box>
         </Container>
