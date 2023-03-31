@@ -35,7 +35,18 @@ export default function useData() {
             'inne',
         ],
 
-        Wydruki: ['Schemat El.', 'Rysunek Mech.', 'MCC unit ID', 'MVD Test docs', 'MCC Switch label', 'Inne'],
+        Wydruki: [
+            'Schemat El.',
+            'Rysunek Mech.',
+            'MCC unit ID',
+            'MVD Test docs',
+            'MCC Switch label',
+            'PF6k 3PC 3,3kV',
+            'PF6k 4PC 4,16kV',
+            'PF6k 5PC 6,0kV',
+            'PF6k 6PC 6,6kV',
+            'Inne',
+        ],
     });
 
     useEffect(() => {
