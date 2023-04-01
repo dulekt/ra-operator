@@ -1,4 +1,5 @@
 import { Button, Container, SimpleGrid, Spinner, Text } from '@chakra-ui/react';
+import ModalLabels from 'components/ModalLabels';
 import useData from 'hooks/useData';
 
 export default function SetLabelView(props) {
@@ -29,6 +30,7 @@ export default function SetLabelView(props) {
                     ))
                 )}
             </SimpleGrid>
+            <ModalLabels />
         </Container>
     );
 }
