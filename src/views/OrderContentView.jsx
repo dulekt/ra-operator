@@ -1,5 +1,5 @@
 import { MdDelete } from 'react-icons/md';
-import { Box, Button, ButtonGroup, Container, IconButton, Tooltip } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup, Container, IconButton, Tooltip, useToast } from '@chakra-ui/react';
 import OrdersList from 'components/OrdersList';
 import { convertContentToList } from 'utils/convertContentToList';
 import { preparePrintPayload } from 'utils/preparePrintPayload';
@@ -13,22 +13,37 @@ const port = '5000';
 export default function OrderContentView(props) {
     const { labelType } = props;
     const { orderType } = props;
+    const toastContent = {
+        title: 'Zamówienie wysłane',
+        description: 'Zamówienie zostało wysłane do serwera',
+        status: 'success',
+        duration: 4000,
+        isClosable: true,
+    };
+
+    const toast = useToast();
+
     async function sendOrderToServer() {
         const contentList = convertContentToList(props.content);
         const orderPlusContent = Object.assign(props.order, {
             content: contentList,
         });
 
-        const response = await fetch(`http://${ip}:${port}/orders`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(orderPlusContent),
-        });
+        // if content is empty, do not send
+        if (contentList.length < 1 && contentList[0] === '') {
+            const response = await fetch(`http://${ip}:${port}/orders`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(orderPlusContent),
+            });
 
-        const data = await response.json();
-        console.log('DATA', data);
+            const data = await response.json();
+            console.log('DATA', data);
+        }
+
+        toast(toastContent);
 
         props.emptyContent();
     }
