@@ -11,8 +11,8 @@ const ip = '10.76.18.176';
 const port = '5000';
 
 export default function OrderContentView(props) {
-    const { labelType } = props;
-    const { orderType } = props;
+    const { labelType, orderType } = props;
+
     const toastContent = {
         title: 'Zamówienie wysłane',
         description: 'Zamówienie zostało wysłane do serwera',

@@ -15,9 +15,10 @@ export default function ModalLabels() {
 
     return (
         <>
-            <Button colorScheme="blue" size="sm" onClick={onOpen} variant="outline" m={1}>
-                Pokaz naklejki
-            </Button>
+            {/*
+                <Button colorScheme="blue" size="sm" onClick={onOpen} variant="outline" m={1}>
+                    Pokaz naklejki
+                </Button> */}
 
             <Modal isOpen={isOpen} onClose={onClose} size="xl">
                 <ModalOverlay bg="none" backdropFilter="auto" backdropInvert="30%" backdropBlur="5px" />
