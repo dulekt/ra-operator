@@ -30,7 +30,7 @@ export default function OrderContentView(props) {
         });
 
         // if content is empty, do not send
-        if (contentList.length < 1 && contentList[0] === '') {
+        
             const response = await fetch(`http://${ip}:${port}/orders`, {
                 method: 'POST',
                 headers: {
@@ -41,7 +41,7 @@ export default function OrderContentView(props) {
 
             const data = await response.json();
             console.log('DATA', data);
-        }
+        
 
         toast(toastContent);
 
