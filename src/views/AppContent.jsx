@@ -50,6 +50,7 @@ export default function AppContent(props) {
                     printOverIP={props.printOverIP}
                     removeContent={props.removeContent}
                     labelsAndTypes={props.labelsAndTypes}
+                    handleLogout={props.handleLogout}
                 />
             </>
         );
