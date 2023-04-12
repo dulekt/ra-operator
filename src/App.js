@@ -160,6 +160,7 @@ export default function App() {
                     changeContentText={changeContentText}
                     changeContentAmmount={changeContentAmmount}
                     back={back}
+                    handleLogout={handleLogout}
                 />
 
                 <AppFooter

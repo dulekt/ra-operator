@@ -30,22 +30,22 @@ export default function OrderContentView(props) {
         });
 
         // if content is empty, do not send
-        
-            const response = await fetch(`http://${ip}:${port}/orders`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(orderPlusContent),
-            });
 
-            const data = await response.json();
-            console.log('DATA', data);
-        
+        const response = await fetch(`http://${ip}:${port}/orders`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(orderPlusContent),
+        });
 
-        toast(toastContent);
+        const data = await response.json();
+        const { status } = data;
+        if (status === 'success') {
+            toast(toastContent);
 
-        props.emptyContent();
+            props.emptyContent();
+        }
     }
 
     async function handlePrint() {
