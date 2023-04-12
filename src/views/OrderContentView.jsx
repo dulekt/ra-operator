@@ -24,7 +24,7 @@ export default function OrderContentView(props) {
     const toast = useToast();
 
     async function sendOrderToServer() {
-        const contentList = convertContentToList(props.content);
+        const contentList = convertContentToList(props.order.user, props.content);
         const orderPlusContent = Object.assign(props.order, {
             content: contentList,
         });
@@ -39,9 +39,7 @@ export default function OrderContentView(props) {
             body: JSON.stringify(orderPlusContent),
         });
 
-        const data = await response.json();
-        const { status } = data;
-        if (status === 'success') {
+        if (response.ok) {
             toast(toastContent);
 
             props.emptyContent();
@@ -49,7 +47,7 @@ export default function OrderContentView(props) {
     }
 
     async function handlePrint() {
-        const printContent = convertContentToList(props.content);
+        const printContent = convertContentToList('direct', props.content);
         const printPayload = preparePrintPayload(printContent);
         const printerResponse = await printViaAPI(printPayload);
         console.log('PRINTER RESPONSE', printerResponse);
