@@ -1,4 +1,4 @@
-const ip = '10.76.18.176';
+const ip = '10.76.18.204';
 const port = '5000';
 const labelTypes = {
     Naklejki: [],

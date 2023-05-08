@@ -1,7 +1,7 @@
 import { Button, Container, Text, Textarea } from '@chakra-ui/react';
 import useData from 'hooks/useData';
 
-const ip = '10.76.18.176';
+const ip = '10.76.18.204';
 const port = '5000';
 
 export default function SpecialOrderContentView(props) {
