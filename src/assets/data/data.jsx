@@ -7,9 +7,11 @@ const labelTypes = {
         '1-Sleeve tag',
         '30-Terminal MCC',
         '34-Terminal PF6000',
+        '37-Terminal P4',
         '51-Terminale MVD J4',
         '54-Terminale MVD W10',
         '55-Terminale ABB',
+        '2100 sleeve tag',
     ],
     Grawerki: [
         'MCC legend plate',
