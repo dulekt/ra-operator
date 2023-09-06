@@ -21,7 +21,6 @@ export default function useData() {
             '51-Terminale MVD J4',
             '54-Terminale MVD W10',
             '55-Terminale ABB',
-            '2100 sleeve tag',
         ],
         Grawerki: [
             'MCC legend plate',
